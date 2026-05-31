@@ -1,0 +1,15 @@
+name: Success Pipeline
+
+on:
+  workflow_dispatch:
+
+jobs:
+
+  success-job:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Mensaje
+        run: echo "Pipeline exitoso"
