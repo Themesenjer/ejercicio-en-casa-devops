@@ -7,11 +7,41 @@ on:
 
 jobs:
 
-  success-job:
+  build-test-docker:
 
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: read
+      packages: write
+
     steps:
 
-      - name: Mensaje
-        run: echo "Pipeline exitoso"
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
+
+      - name: Build TypeScript
+        run: npm run build
+
+      - name: Build Docker image
+        run: |
+          docker build -t ghcr.io/themesenjer/ejercicio-en-casa-devops:1.0.0 .
+
+      - name: Login to GitHub Container Registry
+        run: |
+          echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u themesenjer --password-stdin
+
+      - name: Push Docker image
+        run: |
+          docker push ghcr.io/themesenjer/ejercicio-en-casa-devops:1.0.0

@@ -1,7 +1,7 @@
 name: Fail Pipeline
 
 on:
-  push:
+  workflow_dispatch:
 
 jobs:
 
