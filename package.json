@@ -1,0 +1,32 @@
+{
+  "name": "ejercicio_en_casa1",
+  "version": "1.0.0",
+  "description": "Basic calculator with Node.js, TypeScript, Docker and GitHub Actions",
+  "main": "dist/index.js",
+
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts",
+    "test": "jest"
+  },
+
+  "keywords": [
+    "devops",
+    "typescript",
+    "docker",
+    "github-actions"
+  ],
+
+  "author": "Pablo Reyes",
+  "license": "ISC",
+
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "@types/node": "^25.9.1",
+    "jest": "^30.4.2",
+    "ts-jest": "^29.4.11",
+    "ts-node": "^10.9.2",
+    "typescript": "^6.0.3"
+  }
+}
